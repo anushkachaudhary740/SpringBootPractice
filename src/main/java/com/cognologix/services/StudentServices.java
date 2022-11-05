@@ -45,9 +45,9 @@ public class StudentServices {
         return student;
     }
 
-    public String  deleteStudentById(int id) {
+    public  void deleteStudentById(int id) {
         this.studentRepository.deleteById(id);
-        return "Data ";
+
     }
 
     public void updateStudent(Student student,int id) {
