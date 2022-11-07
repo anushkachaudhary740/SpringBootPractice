@@ -1,10 +1,8 @@
 package com.cognologix.services;
-
 import com.cognologix.dao.AddressRepository;
 import com.cognologix.model.Address;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
 import java.util.List;
 @Component
 public class AddressServices {

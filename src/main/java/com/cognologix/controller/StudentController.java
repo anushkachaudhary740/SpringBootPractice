@@ -15,20 +15,29 @@ public class StudentController {
     private StudentServices studentServices;
     @GetMapping("/get")
     public ResponseEntity<List<Student>> findAllStudentDetails(){
-
-        List<Student>list= this.studentServices.getAllStudent();
-        if(list.size()<=0){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        List<Student>list=null;
+        try {
+            list = this.studentServices.getAllStudent();
+            if (list.size() <= 0) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
         return ResponseEntity.of(Optional.of(list));
     }
     @GetMapping("/get/{id}")
     public ResponseEntity<Student> findStudentDetailsById(@PathVariable("id") int id){
-        Student student=studentServices.getStudentById(id);
-        if(student==null){
-            return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+        Student stu=null;
+        try {
+            stu = studentServices.getStudentById(id);
+            if (stu == null) {
+                return ResponseEntity.status(HttpStatus.NOT_FOUND).build();
+            }
+        }catch (Exception e){
+            e.printStackTrace();
         }
-        return ResponseEntity.of(Optional.of(student));
+        return ResponseEntity.of(Optional.of(stu));
 
     }
     @PostMapping("/post")
